@@ -25,6 +25,7 @@ class AppLocalizations {
       'unavailable': 'Dolu',
       'perNight': 'gece',
       'reservationSuccess': 'Rezervasyon başarıyla oluşturuldu!',
+      'favorites': 'Favoriler',
     },
     'en': {
       'hotels': 'Hotels',
@@ -41,6 +42,7 @@ class AppLocalizations {
       'unavailable': 'Full',
       'perNight': 'night',
       'reservationSuccess': 'Reservation created successfully!',
+      'favorites': 'Favorites',
     },
   };
 
@@ -49,8 +51,7 @@ class AppLocalizations {
   }
 }
 
-class AppLocalizationsDelegate
-    extends LocalizationsDelegate<AppLocalizations> {
+class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   const AppLocalizationsDelegate();
 
   @override

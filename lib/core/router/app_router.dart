@@ -8,6 +8,7 @@ import 'package:meristay/features/hotels/presentation/screens/hotel_list_screen.
 import 'package:meristay/features/reservations/presentation/screens/reservation_screen.dart';
 
 import '../../features/auth/presentation/providers/auth_provider.dart';
+import '../../features/favorites/presentation/screens/favorites_screen.dart';
 
 // Global ChangeNotifier — token değişimini router'a bildirir
 class _AuthNotifier extends ChangeNotifier {
@@ -30,10 +31,7 @@ final appRouter = GoRouter(
     return null;
   },
   routes: [
-    GoRoute(
-      path: '/login',
-      builder: (context, state) => const LoginScreen(),
-    ),
+    GoRoute(path: '/login', builder: (context, state) => const LoginScreen()),
     GoRoute(
       path: '/hotels',
       builder: (context, state) => const HotelListScreen(),
@@ -53,6 +51,10 @@ final appRouter = GoRouter(
           },
         ),
       ],
+    ),
+    GoRoute(
+      path: '/favorites',
+      builder: (context, state) => const FavoritesScreen(),
     ),
   ],
 );

@@ -1,32 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
-import 'package:meristay/features/hotels/presentation/providers/hotel_provider.dart';
-
+import 'package:meristay/features/favorites/presentation/providers/favorites_provider.dart';
 import '../../../../core/localization/app_localizations.dart';
 import '../../../../core/providers/language_provider.dart';
 import '../../../auth/presentation/providers/auth_provider.dart';
-import '../widgets/hotel_card.dart';
+import '../../../hotels/presentation/widgets/hotel_card.dart';
 
-class HotelListScreen extends ConsumerWidget {
-  const HotelListScreen({super.key});
-
-  // ConsumerWidget — normal StatelessWidget'ın Riverpod versiyonu. Farkı build metodunda WidgetRef ref parametresi geliyor.
-  // ref.watch(hotelProvider) — bu provider'ı izlemeye başlıyor. State her değiştiğinde bu widget otomatik rebuild oluyor. ref.read ile farkı şu: read sadece bir kere okur, watch sürekli izler.
-  // switch (state) — sealed class olduğu için tüm durumları yazmak zorundayız. HotelInitial ve HotelLoading'de loading göster, HotelError'da hata mesajı, HotelLoaded'da liste.
+class FavoritesScreen extends ConsumerWidget {
+  const FavoritesScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(hotelProvider);
+    final state = ref.watch(favoritesProvider);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context).translate('hotels')),
+        title: Text(AppLocalizations.of(context).translate('favorites')),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.favorite),
-            onPressed: () => context.push('/favorites'),
-          ),
           // Dil butonu
           Consumer(
             builder: (context, ref, _) {
@@ -58,23 +48,24 @@ class HotelListScreen extends ConsumerWidget {
         ],
       ),
       body: switch (state) {
-        HotelInitial() ||
-        HotelLoading() => const Center(child: CircularProgressIndicator()),
-        HotelError(:final message) => Center(
+        FavoritesInitial() ||
+        FavoritesLoading() => const Center(child: CircularProgressIndicator()),
+        FavoritesError(:final message) => Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(message),
               ElevatedButton(
-                onPressed: () => ref.read(hotelProvider.notifier).fetchHotels(),
+                onPressed: () =>
+                    ref.read(favoritesProvider.notifier).fetchFavorites(),
                 child: const Text('Tekrar Dene'),
               ),
             ],
           ),
         ),
-        HotelLoaded(:final hotels) => ListView.builder(
-          itemCount: hotels.length,
-          itemBuilder: (_, index) => HotelCard(hotel: hotels[index]),
+        FavoritesLoaded(:final favorites) => ListView.builder(
+          itemCount: favorites.length,
+          itemBuilder: (_, index) => HotelCard(hotel: favorites[index]),
         ),
       },
     );

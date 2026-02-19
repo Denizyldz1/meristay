@@ -38,6 +38,7 @@ class HotelRepositoryImpl implements HotelRepository {
     final hotels = await getHotels();
     return hotels.firstWhere((h) => h.id == id);
   }
+  
 }
 
 // HotelRepositoryImpl, HotelRepository arayüzünü implement eder ve mock data sağlar. Gerçek API entegrasyonu yaparken sadece bu sınıfı güncellememiz yeterli olacaktır.

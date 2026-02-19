@@ -2,18 +2,21 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/misc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:meristay/features/auth/domain/repositories/auth_repository.dart';
+import 'package:meristay/features/favorites/domain/repositories/favorites_repository.dart';
 import 'package:meristay/features/hotels/domain/repositories/hotel_repository.dart';
 import 'package:meristay/features/reservations/domain/repositories/reservation_repository.dart';
 import 'package:mocktail/mocktail.dart';
 
 class MockHotelRepository extends Mock implements HotelRepository {}
-class  MockAuthRepository extends Mock implements AuthRepository {}
+
+class MockAuthRepository extends Mock implements AuthRepository {}
+
 class MockReservationRepository extends Mock implements ReservationRepository {}
+
+class MockFavoritesRepository extends Mock implements FavoritesRepository {}
 
 // mocktail paketi bu sınıfa özel güçler veriyor. when(() => mockRepository.getHotels()).thenAnswer(...) diyerek "bu metod çağrılırsa şunu döndür" diyebiliyoruz. Gerçek API çağrısı yok, internet bağlantısı yok, hızlı çalışıyor.
 // Abstract repository yazmamızın faydası burada ortaya çıkıyor — MockHotelRepository da HotelRepositoryImpl de aynı sözleşmeyi uyguluyor, Notifier ikisinin farkını bilmiyor.
-
-
 
 // Test container oluşturucu
 ProviderContainer makeContainer({List<Override> overrides = const []}) {
