@@ -142,4 +142,4 @@ flutter run
 
 ---
 
-*Built by [Deniz](https://github.com/yourusername) — Flutter Developer @ Merit Technology*
+*Built by [Deniz](https://github.com/Denizyldz1) — Flutter Developer @ Merit Technology*
