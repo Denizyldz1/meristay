@@ -1,0 +1,29 @@
+name: meristay
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  dio: ^5.9.1
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  flutter_riverpod: ^3.2.1
+  flutter_screenutil: ^5.9.3
+  freezed_annotation: ^3.1.0
+  go_router: ^17.1.0
+  json_annotation: ^4.10.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  mocktail: ^1.0.4
+
+
+flutter:
+  uses-material-design: true

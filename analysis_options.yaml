@@ -1,0 +1,57 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude: # Kuralların uygulanmayacağı dosyalar
+    - "lib/generated/l10n.dart"
+    - "lib/generated/intl/**"
+
+linter:
+  rules:
+    # Const kuralları
+    prefer_const_constructors: true
+    prefer_const_literals_to_create_immutables: true
+    prefer_const_declarations: true
+    prefer_const_constructors_in_immutables: true
+    
+    # Kod kalitesi
+    avoid_print: true                              # print yerine debugPrint/logger kullan
+    avoid_unnecessary_containers: true             # Gereksiz Container'ları kaldır
+    sized_box_for_whitespace: true                 # Boşluk için Container yerine SizedBox
+    use_key_in_widget_constructors: true          # Widget'larda key kullan
+    
+    # Okunabilirlik
+    prefer_single_quotes: true                     # Çift tırnak yerine tek tırnak
+    sort_child_properties_last: true              # child parametresi en sonda
+    always_declare_return_types: true             # Fonksiyonlarda return tipi belirt
+    prefer_is_empty: true                         # .length == 0 yerine .isEmpty
+    prefer_is_not_empty: true                     # .length > 0 yerine .isNotEmpty
+    
+    # Hata önleme
+    avoid_returning_null_for_void: true
+    cancel_subscriptions: true                     # Stream aboneliklerini kapat
+    close_sinks: true                             # StreamController'ları kapat
+    
+    # Performans
+    avoid_slow_async_io: true
+    prefer_foreach: true                          # for-in yerine forEach
+    prefer_spread_collections: true               # ... operatörü kullan
+    use_colored_box: true                         # Container(color:) yerine ColoredBox (daha hızlı)
+    use_decorated_box: false                       # Container(decoration:) yerine DecoratedBox (daha hızlı)
+    prefer_collection_literals: true              # List() yerine [] (daha hızlı)
+    prefer_inlined_adds: true                     # ..add() yerine direkt liste elemanı
+    prefer_for_elements_to_map_fromIterable: true # Map.fromIterable yerine for-in
+    prefer_if_elements_to_conditional_expressions: true # condition ? x : y yerine if
+    avoid_function_literals_in_foreach_calls: false # forEach içinde fonksiyon performans kaybı
+    use_string_buffers: true                      # String += yerine StringBuffer (çok ekleme varsa)
+    use_is_even_rather_than_modulo: true          # % 2 == 0 yerine isEven (daha hızlı)
+    
+    # Güvenlik
+    avoid_web_libraries_in_flutter: true
+    no_logic_in_create_state: true               # createState'de mantık olmasın
+    
+    # Modern Dart
+    prefer_final_fields: true                     # Mümkünse final kullan
+    prefer_final_locals: true
+    prefer_if_null_operators: true               # ?? operatörü kullan
+    prefer_null_aware_operators: true            # ?. operatörü kullan
+    unnecessary_nullable_for_final_variable_declarations: true
